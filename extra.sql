@@ -90,4 +90,10 @@ BEGIN
     RETURN total_revenue;
 END;
 $$ LANGUAGE plpgsql;
+
+-- Get the salesperson name
+SELECT GetSalespersonName(1) AS salesperson_name;
+
+-- Calculate the total revenue for a salesperson
+SELECT CalculateSalespersonRevenue(1) AS total_revenue;
  
