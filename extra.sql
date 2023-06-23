@@ -25,3 +25,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Function to insert a new invoice
+CREATE FUNCTION InsertInvoice(p_salesperson_id INTEGER, p_car_id INTEGER)
+RETURNS VOID AS $$
+BEGIN
+    INSERT INTO Invoice (salesperson_id, car_id)
+    VALUES (p_salesperson_id, p_car_id);
+END;
+$$ LANGUAGE plpgsql;
+
