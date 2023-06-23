@@ -16,3 +16,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Function to insert a new car
+CREATE FUNCTION InsertCar(p_serial_number VARCHAR(50))
+RETURNS VOID AS $$
+BEGIN
+    INSERT INTO Car (serial_number)
+    VALUES (p_serial_number);
+END;
+$$ LANGUAGE plpgsql;
+
