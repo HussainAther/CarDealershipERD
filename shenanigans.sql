@@ -32,6 +32,8 @@ CREATE TABLE "Invoice" (
   "car_id" INTEGER,
   "mechanic_id" INTEGER,
   PRIMARY KEY ("invoice_id")
+  FOREIGN KEY ("salesperson_id") REFERENCES "Salesperson" ("salesperson_id"),
+  FOREIGN KEY ("car_id") REFERENCES "Car" ("car_id")
 );
 
 CREATE TABLE "Service Ticket" (
@@ -39,12 +41,26 @@ CREATE TABLE "Service Ticket" (
   "customer_id" INTEGER,
   "car_id" INTEGER,
   PRIMARY KEY ("ticket_id")
+  FOREIGN KEY ("customer_id") REFERENCES "Customer" ("customer_id"),
+  FOREIGN KEY ("car_id") REFERENCES "Car" ("car_id")
 );
 
 CREATE TABLE "Car" (
   "car_id" SERIAL,
   "serial_number" VARCHAR(50),
   PRIMARY KEY ("car_id")
+);
+
+CREATE TABLE "Service_History" (
+  "history_id" SERIAL PRIMARY KEY,
+  "car_id" INTEGER,
+
+  FOREIGN KEY ("car_id") REFERENCES "Car" ("car_id")
+);
+
+CREATE TABLE "Mechanic" (
+  "mechanic_id" SERIAL PRIMARY KEY,
+  name VARCHAR(50),
 );
 
 -- Create a stored function to insert data into the Salesperson table
