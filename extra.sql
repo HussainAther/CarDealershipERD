@@ -34,3 +34,21 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Function to insert a new service ticket
+CREATE FUNCTION InsertServiceTicket(p_customer_id INTEGER, p_car_id INTEGER)
+RETURNS VOID AS $$
+BEGIN
+    INSERT INTO Service_Ticket (customer_id, car_id)
+    VALUES (p_customer_id, p_car_id);
+END;
+$$ LANGUAGE plpgsql;
+
+-- Function to insert a new service history record
+CREATE FUNCTION InsertServiceHistory(p_car_id INTEGER)
+RETURNS VOID AS $$
+BEGIN
+    INSERT INTO Service_History (car_id)
+    VALUES (p_car_id);
+END;
+$$ LANGUAGE plpgsql;
+
